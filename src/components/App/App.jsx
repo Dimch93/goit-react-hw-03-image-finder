@@ -72,12 +72,12 @@ class App extends Component {
     const { images, isLoading, currentPage, totalPages } = this.state;
 
     return (
-      <div>
+      <>
         <ToastContainer transition={Slide} />
         <SearchBar onSubmit={this.handleSubmit} />
-        {images.length > 0 ? (
-          <ImageGallery images={images} />
-        ) : (
+        <ImageGallery images={images} />
+        {images.length > 0 && isLoading} :{' '}
+        {
           <p
             style={{
               padding: 100,
@@ -87,12 +87,12 @@ class App extends Component {
           >
             Image gallery is empty... 📷
           </p>
-        )}
+        }
         {isLoading && <Loader />}
         {images.length > 0 && totalPages !== currentPage && !isLoading && (
           <Button onClick={this.loadMore} />
         )}
-      </div>
+      </>
     );
   }
 }

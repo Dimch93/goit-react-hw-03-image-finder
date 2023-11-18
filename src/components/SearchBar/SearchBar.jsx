@@ -21,6 +21,11 @@ export class SearchBar extends Component {
     e.preventDefault();
     const searchQuery = e.target.elements.searchName.value.trim();
     this.props.onSubmit(searchQuery);
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ inputValue: '' });
   };
 
   render() {
