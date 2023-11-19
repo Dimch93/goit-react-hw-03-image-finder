@@ -76,8 +76,7 @@ class App extends Component {
         <ToastContainer transition={Slide} />
         <SearchBar onSubmit={this.handleSubmit} />
         <ImageGallery images={images} />
-        {images.length > 0 && isLoading} :{' '}
-        {
+        {images.length === 0 && !isLoading && (
           <p
             style={{
               padding: 100,
@@ -87,7 +86,7 @@ class App extends Component {
           >
             Image gallery is empty... 📷
           </p>
-        }
+        )}
         {isLoading && <Loader />}
         {images.length > 0 && totalPages !== currentPage && !isLoading && (
           <Button onClick={this.loadMore} />
